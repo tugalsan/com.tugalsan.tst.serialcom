@@ -4,6 +4,7 @@ import com.tugalsan.api.log.server.*;
 import com.tugalsan.api.serialcom.server.TS_SerialComBuilder;
 import com.tugalsan.api.serialcom.server.test.TS_SerialComTestJavaCode;
 import com.tugalsan.api.serialcom.server.test.TS_SerialComTestKinConyKC868_A32_R1_2;
+import java.time.Duration;
 
 //WHEN RUNNING IN NETBEANS, ALL DEPENDENCIES SHOULD HAVE TARGET FOLDER!
 //cd C:\me\codes\com.tugalsan\tst\com.tugalsan.tst.serialcom
@@ -13,8 +14,8 @@ public class Main {
     final private static TS_Log d = TS_Log.of(Main.class);
 
     public static void main(String... s) {
-//        TS_SerialComTestJavaCode.test_use_defaultMessageBroker();
-        test_use_defaultMessageBroker();
+        TS_SerialComTestJavaCode.test_use_defaultMessageBroker();
+//        test_use_defaultMessageBroker();
     }
 
     public static void test_use_defaultMessageBroker() {
@@ -28,7 +29,7 @@ public class Main {
                         .onSuccess_useAndClose_defaultMessageBroker((con, mb) -> {
                             var cmd = TS_SerialComTestKinConyKC868_A32_R1_2.chipName();
                             d.cr("with broker", "calling...");
-                            var reply = mb.sendTheCommand_and_fetchMeReplyInMaxSecondsOf(cmd, 5);
+                            var reply = mb.sendTheCommand_and_fetchMeReplyInMaxSecondsOf(cmd, Duration.ofSeconds(10));
                             d.cr("with broker", cmd, reply);
                         })
         );
