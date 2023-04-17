@@ -13,8 +13,7 @@ public class Main {
     final private static TS_Log d = TS_Log.of(Main.class);
 
     public static void main(String... s) {
-//        TS_SerialComTestJavaCode.testUse();
-        TS_SerialComTestJavaCode.test_use_defaultMessageBroker();
+//        TS_SerialComTestJavaCode.test_use_defaultMessageBroker();
         test_use_defaultMessageBroker();
     }
 
@@ -29,7 +28,7 @@ public class Main {
                         .onSuccess_useAndClose_defaultMessageBroker((con, mb) -> {
                             var cmd = TS_SerialComTestKinConyKC868_A32_R1_2.chipName();
                             d.cr("with broker", "calling...");
-                            var reply = mb.sendTheCommand_and_fetchMeReplyInMaxSecondsOf(cmd, 2);
+                            var reply = mb.sendTheCommand_and_fetchMeReplyInMaxSecondsOf(cmd, 5);
                             d.cr("with broker", cmd, reply);
                         })
         );
