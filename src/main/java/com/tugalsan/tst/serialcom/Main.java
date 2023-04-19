@@ -3,6 +3,7 @@ package com.tugalsan.tst.serialcom;
 import com.tugalsan.api.cast.client.TGS_CastUtils;
 import com.tugalsan.api.log.server.TS_Log;
 import com.tugalsan.api.serialcom.server.test.*;
+import com.tugalsan.api.serialcom.server.test.chip.TS_SerialComChip_KinConyKC868_A32_R1_2;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
@@ -33,7 +34,9 @@ public class Main {
                 var choiceStr = reader.readLine();
                 var choiceInt = TGS_CastUtils.toInteger(choiceStr);
                 if (choiceInt == null) {
-                    d.ce("test", "ERROR_CHOICE", choiceStr);
+                    d.cr("test", "custom", choiceStr, TS_SerialComChip_KinConyKC868_A32_R1_2.callStrOptional(chip -> {
+                        return chip.mb.sendTheCommand_and_fetchMeReplyInMaxSecondsOf(choiceStr, chip.timeout, chip.validReplyPrefix, true);
+                    }));
                     continue;
                 }
                 switch (choiceInt) {
