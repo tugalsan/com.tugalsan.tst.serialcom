@@ -30,7 +30,7 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>com.tugalsan.api.serialcom</artifactId>
+            <artifactId>com.tugalsan.api.serialcom.kincony</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
