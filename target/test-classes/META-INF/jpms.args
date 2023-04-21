@@ -1,4 +1,0 @@
---patch-module
-com.tugalsan.tst.serialcom=_
---add-reads
-com.tugalsan.tst.serialcom=ALL-UNNAMED
